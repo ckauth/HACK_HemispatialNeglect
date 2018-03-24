@@ -24,9 +24,9 @@ public class ElephantControl : MonoBehaviour {
             timerTime += Time.deltaTime;
             if (timerTime >= timerInterval)
             {
-                //timerActive = false;
-                timerTime = 0f;
-                TeleportRandomly();
+                transform.localScale = new Vector3(2f, 2f, 2f);
+                timerActive = false;
+                timerTime = 0.0f;
             }
         }
     }
@@ -37,25 +37,22 @@ public class ElephantControl : MonoBehaviour {
         {
             TeleportRandomly();
             HasEscaped = true;
-            //timerActive = true;
+            timerActive = true;
+            timerTime = 0.0f;
+            transform.localScale = new Vector3(1f, 1f, 1f);
+
         }
 
     }
     void OnTriggerExit(Collider col)
     {
         this.GetComponent<Renderer>().enabled = true;
+        
     }
 
     public void TeleportRandomly()
     {
-        Vector3 jump = Random.onUnitSphere * 4;
-        Vector3 finalPos = transform.localPosition + jump;
-
-        //direction.y = Mathf.Clamp(direction.y, 0.5f, 1f);
-        finalPos.y = 0f;
-        finalPos.x = Mathf.Clamp(finalPos.x, -10f, 10f);
-        finalPos.z = Mathf.Clamp(finalPos.y, -10f, 10f);
-        //float distance = 10 * Random.value + 1.5f;
-        transform.localPosition = finalPos;
+        Vector3 jump = new Vector3(0.0f, 0.0f, -5.0f);
+        transform.localPosition += jump;
     }
 }

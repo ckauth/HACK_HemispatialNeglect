@@ -50,12 +50,5 @@ public class GiraffeControl : MonoBehaviour
 
     public void TeleportRandomly()
     {
-        Vector3 direction = Random.onUnitSphere;
-        //direction.y = Mathf.Clamp(direction.y, 0.5f, 1f);
-        direction.y = 0f;
-        direction.x = Mathf.Clamp(direction.x, 0.5f, 1f);
-        direction.z = Mathf.Clamp(direction.y, 0.5f, 1f);
-        float distance = 10 * Random.value + 1.5f;
-        transform.localPosition = direction * distance;
     }
 }
