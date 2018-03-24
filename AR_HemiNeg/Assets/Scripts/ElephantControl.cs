@@ -8,12 +8,18 @@ public class ElephantControl : MonoBehaviour {
     private float timerTime = 0f;
     private bool timerActive;
 
+    public float pos_x;
+    public float pos_z;
+
     public bool HasEscaped = false;
 
     // Use this for initialization
     void Start () {
         timerActive = false;
         timerTime = 0f;
+
+        pos_x = 1.0f;
+        pos_z = 1.0f;
     }
 
     // Update is called once per frame
@@ -29,6 +35,9 @@ public class ElephantControl : MonoBehaviour {
                 timerTime = 0.0f;
             }
         }
+
+        pos_x = transform.localPosition.x;
+        pos_z = transform.localPosition.z;
     }
 
     void OnTriggerEnter(Collider col)
