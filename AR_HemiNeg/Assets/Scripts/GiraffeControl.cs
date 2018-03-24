@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ElephantControl : MonoBehaviour {
+public class GiraffeControl : MonoBehaviour
+{
 
     private float timerInterval = 2f;
     private float timerTime = 0f;
@@ -11,7 +12,8 @@ public class ElephantControl : MonoBehaviour {
     public bool HasEscaped = false;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         timerActive = false;
         timerTime = 0f;
     }
@@ -48,14 +50,12 @@ public class ElephantControl : MonoBehaviour {
 
     public void TeleportRandomly()
     {
-        Vector3 jump = Random.onUnitSphere * 4;
-        Vector3 finalPos = transform.localPosition + jump;
-
+        Vector3 direction = Random.onUnitSphere;
         //direction.y = Mathf.Clamp(direction.y, 0.5f, 1f);
-        finalPos.y = 0f;
-        finalPos.x = Mathf.Clamp(finalPos.x, -10f, 10f);
-        finalPos.z = Mathf.Clamp(finalPos.y, -10f, 10f);
-        //float distance = 10 * Random.value + 1.5f;
-        transform.localPosition = finalPos;
+        direction.y = 0f;
+        direction.x = Mathf.Clamp(direction.x, 0.5f, 1f);
+        direction.z = Mathf.Clamp(direction.y, 0.5f, 1f);
+        float distance = 10 * Random.value + 1.5f;
+        transform.localPosition = direction * distance;
     }
 }

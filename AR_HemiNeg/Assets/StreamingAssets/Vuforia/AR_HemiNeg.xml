@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="A" size="0.100000 0.097267" />
-    <ImageTarget name="VuMark01" size="1.000000 1.113889" />
-    <ImageTarget name="stones" size="0.300000 0.210000" />
-    <CylinderTarget name="can" sideLength="13.000000"/>
+    <ImageTarget name="Marker_playground" size="179.000000 178.498337" />
+    <ImageTarget name="Marker_player" size="54.000000 54.000000" />
   </Tracking>
 </QCARConfig>
