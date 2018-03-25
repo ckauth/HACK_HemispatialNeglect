@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ElephantControl : MonoBehaviour {
 
-    private float timerInterval = 2f;
+    private float timerInterval = 7f;
     private float timerTime = 0f;
     private bool timerActive;
 
