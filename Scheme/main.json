@@ -1,0 +1,188 @@
+{
+    "main":{"objects": "new Objects()", "parameters": "new Parameters()", "userProfile": "new UserProfile()", "Score": "new Score()", "Reward": "new Reward()" ,"Sound???":""},
+    "Objects":{},
+    "Parameters":{
+        "background": "new Backround()",
+        "size": "new Size()",
+        "flash": "new Flash()",
+        "motion": "new Motion()",
+        "location": "new Location()",
+        "time": "new Time()"
+    },
+    "Parameter":{
+        "_comment": "Parent class for all parameters. levels are defined for each parameter separately. Importance factor should indicate by how much we will increase the points dor each parameter.",
+         "levels": 
+         {
+             "1":{  
+                 "property":null
+             },
+             "2":{
+                 "property":null
+             },
+             "3":{
+                 "property":null
+             } 
+         },
+         "importance_factor" : 0
+    },
+    "Backround":
+    {
+         "_comment": "From smooth to very noisy background",
+         "levels": 
+         {
+             "1":{
+                 "property":[
+                    "white.png"
+                 ]
+             },
+             "2":{
+                 "property":[
+                    "stones.png"
+                 ]
+             },
+             "3":{
+                 "property":[
+                    "people.png"
+                 ]
+             } 
+         },
+         "importance_factor" : 6
+    },
+    "Size":
+    {
+         "_comment": "From max_size to minimum (the size is max_size* level.property)",
+         "max_size": 400, 
+         "levels": 
+         {
+             "1":{
+                 "property":1 
+             },
+             "2":{
+                 "property":0.6  
+             },
+             "3":{
+                 "property":0.4
+             } 
+         },
+         "importance_factor" : 3
+    },
+    "Flash":
+    {
+         "_comment": "Object appearing dissapearing or something that puts effect on the object.",
+         "levels": 
+         {
+             "1":{
+                 "flashRate": 0, 
+                 "property":null   
+             },
+             "2":{
+                 "flashRate": 0, 
+                 "property":null   
+             },
+             "3":{
+                 "flashRate": 0, 
+                 "property":null  
+             } 
+         },
+         "importance_factor" : 5
+    },
+    "Motion":
+    {
+         "_comment": "Motion has it trajectory and the speed. The type of the motion could be defined in separate functions or classes",
+         "max_size": 20, 
+         "types": [
+             "linear",
+            "nonlinear",
+            "jumping"
+             ],
+         "levels": 
+         {
+             "1":{
+                 "speed":0.1,
+                 "property": [ "linear", "jumping"]   
+             },
+             "2":{
+                 "speed":0.5,
+                 "property": [ "linear", "jumping"]   
+             },
+             "3":{
+                 "speed":1,
+                 "property": ["nonlinear", "jumping"]
+             } 
+         },
+         "importance_factor" : 1
+    },
+    "Location":
+    {
+         "_comment": "Location must be calibrated before saying how difficult it is. Property this time is 'difficulty that we got during the calibration phase. It means that if we assigned for pixels difficulty is in range that is defined in the property, we could show object in that range'",
+         "levels": 
+         {
+             "1":{
+                 "property": [0.1,0.5]
+             },
+             "2":{
+                 "property": [0.5,0.8] 
+             },
+             "3":{
+                 "property": [0.8, 1]
+             } 
+         },
+         "importance_factor" : 4
+    },
+    "Time":
+    {
+         "_comment": "How quickly (in miliseconds) user has to respopnd during certain level stimulus.",
+         "levels": 
+         {
+             "1":{
+                 "property": 15000
+             },
+             "2":{
+                 "property": 10000  
+             },
+             "3":{
+                 "property": 5000  
+             } 
+         },
+         "importance_factor" : 3
+    },
+    "UserProfile":
+    {
+        "_comment": "Neglected side will be found out during the calibration or it could be just left because it is true for most of the cases. Level will be defined for each property (here it is float value that repressents gradual level change). After each answer level ",
+        "neglectedSide" : "left",
+        "levels":
+        {
+            "backgound": 0,    
+            "size": 0,    
+            "contrast": 0,    
+            "flash": 0,    
+            "motion": 0,    
+            "location": 0,
+            "time": 0
+        },
+       "events": ["event"],
+       "score": 0
+    },
+    "event":{
+        "_comment": "all levels that are during the event, time in minisec, success, bool",
+        "levels":{
+            "background": 0,
+            "size": 0,
+            "flash": 0,
+            "motion": 0,
+            "location": 0,
+            "time": 0
+        }, 
+        "time":2000, 
+        "success":true
+    },
+    "Score":{
+        "addPoints": "function() background.level * background.importance_factor + size.level * size.importance_factor + motion.level * motion.importance_factor + location.level * location.importance_factor"
+    },
+    "Reward":
+     {
+        "rewardMessageList": ["Bravo", "Keep going!", "We love you!", "Don't stop until you are proud", "Reward yourself", "No one ever drowned in a sweat"],
+        "motivationalMessages": ["You are almost there", "Where there is no struggle, there is no strenght", "Slow progress is beter than no progress."],
+        "rewardingSounds": []
+    }
+}
