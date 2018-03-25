@@ -1,0 +1,154 @@
+using System;
+
+namespace GameMain {
+
+    public class Object
+    {
+        public string name { get; set; };
+        public float default_size { get; set; };
+    }
+
+    List<Object> _objects { get; set; }
+    List<Level> Objects { 
+                get { return _objects ?? _objects = new List<Level>
+                                        {new Level(){ name = "girafe", "default_size" : 0.003},
+                                        new Level(){ name = "elephant", "default_size": .04}}; 
+                    } ;
+                set;
+            }
+    /// Main parameters of the object (background,size,flash,motion,location,time)
+    public class Parameters
+    {
+        public class Level
+        {
+            string filename;
+            float magnitude;
+            List<string> multipleValues { get; set; }
+        }
+    
+        public class Type
+        {
+            string name;
+            public funtion movement;
+        }
+
+        /// Levels are defined for each parameter separately. 
+        /// Importance factor should indicate by how much we will increase the points for user comparing on how important parameter is (1 - is the most important).
+        public class Parameter
+        {
+            public const int importance_factor { get; set; }
+            private List<Level> _levels;
+            public Levels levels { get; set; }
+        }    
+        
+        /// From smooth to very noisy background    
+        public class Backround: Parameter
+        {
+            List<Level> levels { 
+                get { return _levels ?? _levels = new List<Level>
+                                        {new Level(){ filename = "white.png"},
+                                        new Level(){ filename = "stones.png"},
+                                        new Level(){ filename = "people.png"}}; 
+                    } ;
+                set;
+            }
+            public const int importance_factor = 6;
+        }
+        
+        /// From max_size to minimum (the size is max_size* level.property)
+        public class Size: Parameter
+        {
+            public const int max_size { get; set; } = 400;
+            public const int importance_factor = 5;
+            List<Level> levels { 
+                get { return _levels ?? _levels = new List<Level>
+                                        {new Level(){ magnitude = 1},
+                                        new Level(){ magnitude = 0.6},
+                                        new Level(){ magnitude = 0.4}}; 
+                    } ;
+                set;
+            }
+        }
+        
+        /// Object appearing dissapearing or something that puts effect on the object.
+        public class Flash: Parameter
+        {
+            public const int importance_factor = 3;
+            List<Level> levels { 
+                get { return _levels ?? _levels = new List<Level>
+                                        {new Level(){ magnitude = 0},
+                                        new Level(){ magnitude = 0},
+                                        new Level(){ magnitude = 0}}; 
+                    } ;
+                set;
+            }
+        }
+
+        /// Motion has it trajectory and the speed (magnitude). 
+        /// The type of the motion could be defined in separate functions or classes
+        public class Motion: Parameter
+        {
+            public List<string> types { get; set; }
+            public const int importance_factor = 1;
+            List<Level> levels { 
+                get { return _levels ?? _levels = new List<Level>
+                                        {new Level(){ magnitude = 0.1, multipleValues: [ "linear", "jumping"]},
+                                        new Level(){ magnitude = 0.5, multipleValues: [ "linear", "jumping"] },
+                                        new Level(){ magnitude = 1, multipleValues: ["nonlinear", "jumping"]}; 
+                    } ;
+                set;
+            }
+        }
+        
+        /// Location must be calibrated before saying how difficult it is. Property this time is 'difficulty that we got during the calibration phase. It means that if we assigned for pixels difficulty is in range that is defined in the property, we could show object in that range'
+        public class Location: Parameter
+        {
+            public const int importance_factor = 4;
+            List<Level> levels { 
+                get { return _levels ?? _levels = new List<Level>
+                                        {new Level(){ magnitude = 0.1, multipleValues: [0,1][ "linear", "jumping"]},
+                                        new Level(){ magnitude = 0.5, multipleValues: [ "linear", "jumping"] },
+                                        new Level(){ magnitude = 1, multipleValues: ["nonlinear", "jumping"]}; 
+                    } ;
+                set;
+            }
+        }
+        
+        /// How quickly (in miliseconds) user has to respopnd during certain level stimulus.
+        public class Time
+        {
+            public Levels levels { get; set; }
+            public const int importance_factor = 2;
+        }
+    }
+    
+    /// Neglected side will be found out during the calibration or it could be just left because it is true for most of the cases. Level will be defined for each property (here it is float value that repressents gradual level change). After each answer level is updated (+ or -) by constant value.
+    public class UserProfile
+    {
+        public string neglectedSide { get; set; }
+        public LevelTypeList LevelTypeList { get; set; }
+        public List<string> events { get; set; }
+        public int score { get; set; } = 0;
+    }
+    
+    /// all levels that are during the event, time in minisec, success, bool
+    public class Event
+    {
+        public LevelTypeList levelTypeList { get; set; }
+        public int time { get; set; }
+        public bool success { get; set; }
+    }
+
+    public class Score
+    {
+        public string addPoints { get; set; }
+    }
+
+    public class Reward
+    {
+        public List<string> rewardMessageList { get; set; }
+        public List<string> motivationalMessages { get; set; }
+        public List<object> rewardingSounds { get; set; }
+    }
+}
+
