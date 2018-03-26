@@ -1,6 +1,6 @@
 # Motivation
 
-Hemispatial neglect syndrome is an anomaly that is caused by an injury to one of the cerebral hemispheres, which leads patients
+_Hemispatial neglect syndrome_ is an anomaly that is caused by an injury to one of the cerebral hemispheres, which leads patients
 to neglect, or _forget_, about half of the space that surrounds them. This injury prevents the brain from responding to stimulus
 signals, coming from their left generally. Not seeing, hearing or feeling on their left, patients risk to hit obstacles when walking,
 they read only the right side of a text, cut sentences in half, answer to somebody on their right although someone on their left side 
@@ -39,7 +39,7 @@ starting point.
 	
 * **Unintrusive** - The card-board and smartphone don't weigh much and are easily fixable with an elastic band around the patient's head.
 
-![Overview](https://github.com/ckauth/HACK_HemispatialNeglect/blob/master/Illustrations/overview.jpg)
+![Overview](https://github.com/ckauth/HACK_HemispatialNeglect/blob/master/Illustrations/overview.jpg =400x)
 
 # Award
 
@@ -49,7 +49,7 @@ We are honored to being awarded the first prize of the [_Arkathon 2018 - Hacking
 
 # User Guide
 
-The project is written in C# for the [Unity](https://unity3d.com/) game engine, in combination with the [Vuforia](https://www.vuforia.com/) f
+The project is written in C# for the [Unity](https://unity3d.com/) game engine, in combination with the [Vuforia](https://www.vuforia.com/)
 augmented reality SDK. The code is as structured as a hackathon permits it to be ;)
 
 To get started, all you need is a smartphone that runs Android, and some cardboard if you want to dive into the full experience.
