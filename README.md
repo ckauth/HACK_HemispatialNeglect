@@ -39,7 +39,7 @@ starting point.
 	
 * **Unintrusive** - The card-board and smartphone don't weigh much and are easily fixable with an elastic band around the patient's head.
 
-![Overview](https://github.com/ckauth/HACK_HemispatialNeglect/blob/master/Illustrations/overview.jpg =400x)
+![Overview](https://github.com/ckauth/HACK_HemispatialNeglect/blob/master/Illustrations/overview.jpg)
 
 # Award
 
