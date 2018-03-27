@@ -54,6 +54,6 @@ augmented reality SDK. The code is as structured as a hackathon permits it to be
 
 To get started, all you need is a smartphone that runs Android, and some cardboard if you want to dive into the full experience.
 
-The rules of the game are not complex, you may learn them from the above animation. Now have fun playing!
+The rules of this game level are not complex, you may learn them from the above animation. Thoughts about game design for level extensions are listed in the [Scheme](https://github.com/ckauth/HACK_HemispatialNeglect/tree/master/Scheme) folder. Now have fun playing!
 
 
