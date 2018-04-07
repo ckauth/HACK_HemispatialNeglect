@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class GiraffeControl : MonoBehaviour
 {
 
@@ -11,11 +12,14 @@ public class GiraffeControl : MonoBehaviour
 
     public bool HasEscaped = false;
 
+	public AudioClip sound;
+    AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
         timerActive = false;
         timerTime = 0f;
+		audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,6 +44,8 @@ public class GiraffeControl : MonoBehaviour
             TeleportRandomly();
             HasEscaped = true;
             //timerActive = true;
+			audioSource.Play();
+			//audioSource.PlayOneShot(sound, 1.0F);
         }
 
     }
