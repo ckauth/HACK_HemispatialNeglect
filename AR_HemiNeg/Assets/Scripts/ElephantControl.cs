@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class ElephantControl : MonoBehaviour {
 
     private float timerInterval = 7f;
@@ -13,6 +14,8 @@ public class ElephantControl : MonoBehaviour {
 
     public bool HasEscaped = false;
 
+    public AudioClip sound;
+    AudioSource audioSource;
     // Use this for initialization
     void Start () {
         timerActive = false;
@@ -20,6 +23,7 @@ public class ElephantControl : MonoBehaviour {
 
         pos_x = 1.0f;
         pos_z = 1.0f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class ElephantControl : MonoBehaviour {
             timerActive = true;
             timerTime = 0.0f;
             transform.localScale = new Vector3(1f, 1f, 1f);
+            audioSource.Play();
 
         }
 
